@@ -13,20 +13,50 @@ const headers = {
   'trakt-api-key': process.env.TRAKT_KEY
 }
 
+const idsType = new GraphQLObjectType({
+  name: 'Ids',
+  fields: {
+    trakt: {
+      type: GraphQLString,
+      resolve: ids => ids.trakt
+    },
+    slug: {
+      type: GraphQLString,
+      resolve: ids => ids.slug
+    },
+    tvdb: {
+      type: GraphQLString,
+      resolve: ids => ids.tvdb
+    },
+    imdb: {
+      type: GraphQLString,
+      resolve: ids => ids.imdb
+    },
+    tmdb: {
+      type: GraphQLString,
+      resolve: ids => ids.tmdb
+    },
+    tvrage: {
+      type: GraphQLString,
+      resolve: ids => ids.tvrage
+    }
+  }
+})
+
 const movieType = new GraphQLObjectType({
   name: 'Movie',
   fields: {
     title: {
       type: GraphQLString,
-      resolve: json => {
-        return json.movie.title
-      }
+      resolve: json => json.movie.title
     },
     year: {
       type: GraphQLInt,
-      resolve: json => {
-        return json.movie.year
-      }
+      resolve: json => json.movie.year
+    },
+    ids: {
+      type: idsType,
+      resolve: json => json.movie.ids
     }
   }
 })
