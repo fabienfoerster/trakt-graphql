@@ -17,28 +17,22 @@ const idsType = new GraphQLObjectType({
   name: 'Ids',
   fields: {
     trakt: {
-      type: GraphQLString,
-      resolve: ids => ids.trakt
+      type: GraphQLString
     },
     slug: {
-      type: GraphQLString,
-      resolve: ids => ids.slug
+      type: GraphQLString
     },
     tvdb: {
-      type: GraphQLString,
-      resolve: ids => ids.tvdb
+      type: GraphQLString
     },
     imdb: {
-      type: GraphQLString,
-      resolve: ids => ids.imdb
+      type: GraphQLString
     },
     tmdb: {
-      type: GraphQLString,
-      resolve: ids => ids.tmdb
+      type: GraphQLString
     },
     tvrage: {
-      type: GraphQLString,
-      resolve: ids => ids.tvrage
+      type: GraphQLString
     }
   }
 })
@@ -65,12 +59,10 @@ const userType = new GraphQLObjectType({
   name: 'User',
   fields: {
     username: {
-      type: GraphQLString,
-      resolve: json => json.username
+      type: GraphQLString
     },
     name: {
-      type: GraphQLString,
-      resolve: json => json.name
+      type: GraphQLString
     },
     watchlist: {
       type: new GraphQLList(movieType),
